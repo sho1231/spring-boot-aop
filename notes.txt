@@ -1,0 +1,45 @@
+Spring Aop:
+
+1) It breaks code into concerns.
+2) Cross cutting concern is a type of concern, which is affects throughout the application.
+For ex) Logging, authenticating
+dependency:
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+3) JointPoint: point of execution of a method --> before execution or after execution of a method
+4) Pointcut:(surface level definition) expression which helps to match the jointpoint.
+5)Ways to define pointcut:
+
+a)@Pointcut("execution(* com.example.aop.springaop.controller.*.*(..))")
+public void logging(){
+
+}
+
+b)@After(value="execution(* com.example.aop.springaop.controller.*.*(..))")
+public void logging(){
+
+}
+
+
+
+
+
+
+
+
+@AfterReturning(value="execution(* com.example.aop.springaop.controller.*.*(..))",returning = "employee")
+    public void afterReturningMethod(JoinPoint joinPoint, Employee employee) {
+        log.info("Signature {}",joinPoint.getSignature());
+        log.info("After returning {}",employee);
+    }
+
+    @AfterThrowing(value="execution(* com.example.aop.springaop.controller.*.*(..))",throwing = "e")
+    public void afterReturningMethod(JoinPoint joinPoint, Exception e) {
+        log.info("After returning {}",e.getMessage());
+    }
+
+
+
+
