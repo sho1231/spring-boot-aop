@@ -44,7 +44,12 @@ c)@AfterReturning(value="execution(* com.example.aop.springaop.controller.*.*(..
 e) @Around --> Combination of @before and @after
                 It takes ProceedingJointPoint as argument instead of just
                 jointpoint.
-                proceedingJointPoint.proceed()--> will execute after request is being executed
+                proceedingJointPoint.proceed()--> will execute after request is being 
+                
+f)//    @Pointcut("execution(* com.example.aop.springaop.controller.*.*(..))")
+//    @Pointcut("within(com.example.aop.springaop.controller.*)")
+    @Pointcut("this(com.example.aop.springaop.service.EmployeeService)")
+
 
 
 
