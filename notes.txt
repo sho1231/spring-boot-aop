@@ -29,16 +29,24 @@ public void logging(){
 
 
 
-@AfterReturning(value="execution(* com.example.aop.springaop.controller.*.*(..))",returning = "employee")
+c)@AfterReturning(value="execution(* com.example.aop.springaop.controller.*.*(..))",returning = "employee")
     public void afterReturningMethod(JoinPoint joinPoint, Employee employee) {
         log.info("Signature {}",joinPoint.getSignature());
         log.info("After returning {}",employee);
     }
 
-    @AfterThrowing(value="execution(* com.example.aop.springaop.controller.*.*(..))",throwing = "e")
+    d)@AfterThrowing(value="execution(* com.example.aop.springaop.controller.*.*(..))",throwing = "e")
     public void afterReturningMethod(JoinPoint joinPoint, Exception e) {
         log.info("After returning {}",e.getMessage());
     }
+
+
+e) @Around --> Combination of @before and @after
+                It takes ProceedingJointPoint as argument instead of just
+                jointpoint.
+                proceedingJointPoint.proceed()--> will execute after request is being executed
+
+
 
 
 
